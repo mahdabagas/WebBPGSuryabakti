@@ -1,394 +1,171 @@
+import { useState, useEffect, useRef } from "react";
+import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
 import nature from "../assets/nature.jpg";
+import nature_2 from "../assets/nature_2.jpg";
+import nature_3 from "../assets/nature_3.jpg";
 
 const Rating = () => {
+  // Data Rating
+  const ratings = [
+    {
+      nama: "Bapak Bagas",
+      pekerjaan: "Kepala Desa",
+      nilai: 4,
+      komentar:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero suscipit non debitis, eligendi voluptates iure ad dolor aut tenetur aperiam.",
+      foto: nature,
+    },
+    {
+      nama: "Bapak Mahda Dhani",
+      pekerjaan: "Kepala Desa",
+      nilai: 4,
+      komentar:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptas.",
+      foto: nature_2,
+    },
+    {
+      nama: "Bapak Dhani",
+      pekerjaan: "Kepala Desa",
+      nilai: 4,
+      komentar:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptas.",
+      foto: nature_3,
+    },
+    {
+      nama: "Bapak Daniel",
+      pekerjaan: "Kepala Desa",
+      nilai: 4,
+      komentar:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptas.",
+      foto: nature,
+    },
+    {
+      nama: "Bapak Taubatan",
+      pekerjaan: "Kepala Desa",
+      nilai: 4,
+      komentar:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptas.",
+      foto: nature_2,
+    },
+    {
+      nama: "Bapak Muhammad",
+      pekerjaan: "Kepala Desa",
+      nilai: 4,
+      komentar:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptas.",
+      foto: nature_3,
+    },
+  ];
+
+  // Component Start
+  const starRating = (amount) => {
+    const star = [];
+    for (let x = 0; x < amount; x++) {
+      star.push(
+        <span class="w-4">
+          <svg
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
+              fill="#F3AE5E"
+            />
+          </svg>
+        </span>
+      );
+    }
+    return (
+      <>
+        <div className="flex mx-auto justify-center mb-4 ">{star}</div>
+      </>
+    );
+  };
+
+  // Slide comment
+  const [curr, setCurr] = useState(0);
+
+  const prevSlide = () => {
+    setCurr((prevIndex) =>
+      prevIndex === 0 ? ratings.length - 1 : prevIndex - 1
+    );
+  };
+
+  // Auto Play
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalCard = ratings.length;
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalCard);
+  };
+  useEffect(() => {
+    const autoPlay = setInterval(nextSlide, 1000);
+    return () => {
+      clearInterval(autoPlay);
+    };
+  }, [currentIndex]);
+
+  useEffect(() => {
+    // Check if currentIndex has reached the last card, then reset to the first card
+    if (currentIndex === totalCard - 3) {
+      setTimeout(() => {
+        setCurrentIndex(0);
+      }, 500); // Delay the reset to avoid abrupt change
+    }
+  }, [currentIndex, totalCard]);
+
   return (
     <>
-      <section class="h-screen bg-white md:h-fit">
-        <div class="w-5/6 mx-auto pt-14 md:py-32">
-          <h1 class="text-primary font-medium text-3xl mb-12 text-center">
+      <section id="rating" class=" bg-white md:h-fit">
+        <div class="w-full mx-auto py-24 md:py-32 ">
+          <h1 class="text-primary font-semibold tracking-wider text-3xl mb-12 text-center">
             Apa Kata Wisatawan?
           </h1>
-          <div class="w-5/6 px-4 mx-auto relative ">
-            <span class="w-9 absolute -left-2 top-1/2 -translate-y-1/2 z-10  md:-left-8 ">
-              <svg
-                viewBox="0 0 36 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+          <div class="w-5/6 mx-auto relative flex items-center gap-2">
+            <div>
+              <FiChevronsLeft
+                size={60}
+                className="text-primary flex justify-end"
+              />
+            </div>
+
+            <div className="md:w-9/12 relative -left-2 mx-auto flex overflow-x-scroll no-scrollbar md:-left-0">
+              <div
+                className="flex flex-nowrap gap-8 ml-5 md:ml-2 lg:md-0 md:gap-6 transition-transform duration-300 "
+                style={{ transform: `translateX(-${currentIndex * 280}px)` }}
               >
-                <path
-                  d="M15.3335 2.00007L2.00016 13.8682L15.3335 25.7363"
-                  stroke="#018577"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M34 2.00007L20.6667 13.8682L34 25.7363"
-                  stroke="#018577"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
-            <div className="lg:hidden">
-              <div class="p-4 bg-secondary drop-shadow-md">
-                <img
-                  class="w-20 h-20 rounded-full mx-auto mb-4"
-                  src={nature}
-                  alt="foto profil"
-                />
-                <h3 class="text-center text-lg font-medium mb-1">
-                  Bapak Danang
-                </h3>
-                <h4 class="text-center text-sm font-medium text-primary mb-2">
-                  Kepala Desa Sidorejo
-                </h4>
-                <div class="flex justify-center mx-auto mb-4">
-                  <span class="w-4">
-                    <svg
-                      viewBox="0 0 15 15"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                        fill="#F3AE5E"
+                {ratings.map((value, index) => (
+                  <div
+                    key={index}
+                    className="p-6 bg-secondary drop-shadow-md overflow-hidden min-h-72 w-[400px] lg:w-64 max-w-xs mx-auto"
+                  >
+                    <div className="flex gap-4 flex-col items-center ">
+                      <img
+                        className="w-20 h-20 rounded-full mx-auto"
+                        src={value.foto}
+                        alt={`foto_${index}`}
                       />
-                    </svg>
-                  </span>
-                  <span class="w-4">
-                    <svg
-                      viewBox="0 0 15 15"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                        fill="#F3AE5E"
-                      />
-                    </svg>
-                  </span>
-                  <span class="w-4">
-                    <svg
-                      viewBox="0 0 15 15"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                        fill="#F3AE5E"
-                      />
-                    </svg>
-                  </span>
-                  <span class="w-4">
-                    <svg
-                      viewBox="0 0 15 15"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                        fill="#F3AE5E"
-                      />
-                    </svg>
-                  </span>
-                  <span class="w-4">
-                    <svg
-                      viewBox="0 0 15 15"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                        fill="#F3AE5E"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <p class="text-sm text-center mb-12">
-                  Lzorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusamus nobis explicabo aspernatur, dolor libero tenetur
-                  mollitia dolores illo amet natus!
-                </p>
+                      <div>
+                        <h3 className="text-lg w-full font-medium mb-1 text-center">
+                          {value.nama}
+                        </h3>
+                        <h4 className="text-sm font-medium text-primary mb-2 text-center">
+                          {value.pekerjaan}
+                        </h4>
+                        {starRating(value.nilai)}
+                      </div>
+                    </div>
+                    <p className="text-sm">{value.komentar}</p>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="hidden lg:block">
-              <div className="flex gap-6 ">
-                <div class="p-6 bg-secondary drop-shadow-md h-96">
-                  <div className="flex gap-4">
-                    <img
-                      class="w-20 h-20 rounded-full "
-                      src={nature}
-                      alt="foto profil"
-                    />
-                    <div>
-                      <h3 class="text-lg font-medium mb-1">Bapak Danang</h3>
-                      <h4 class="text-sm font-medium text-primary mb-2">
-                        Kepala Desa Sidorejo
-                      </h4>
-                      <div class="flex mx-auto mb-4">
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-sm ">
-                    Lzorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusamus nobis explicabo aspernatur, dolor libero tenetur
-                    mollitia dolores illo amet natus!
-                  </p>
-                </div>
-                <div class="p-6 bg-secondary drop-shadow-md  ">
-                  <div className="flex gap-4">
-                    <img
-                      class="w-20 h-20 rounded-full "
-                      src={nature}
-                      alt="foto profil"
-                    />
-                    <div>
-                      <h3 class="text-lg font-medium mb-1">Bapak Danang</h3>
-                      <h4 class="text-sm font-medium text-primary mb-2">
-                        Kepala Desa Sidorejo
-                      </h4>
-                      <div class="flex mx-auto mb-4">
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-sm ">
-                    Lzorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusamus nobis explicabo aspernatur, dolor libero tenetur
-                    mollitia dolores illo amet natus!
-                  </p>
-                </div>
-                <div class="p-6 bg-secondary drop-shadow-md  ">
-                  <div className="flex gap-4">
-                    <img
-                      class="w-20 h-20 rounded-full "
-                      src={nature}
-                      alt="foto profil"
-                    />
-                    <div>
-                      <h3 class="text-lg font-medium mb-1">Bapak Danang</h3>
-                      <h4 class="text-sm font-medium text-primary mb-2">
-                        Kepala Desa Sidorejo
-                      </h4>
-                      <div class="flex mx-auto mb-4">
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                        <span class="w-4">
-                          <svg
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7.5 1.25L9.43125 5.1625L13.75 5.79375L10.625 8.8375L11.3625 13.1375L7.5 11.1063L3.6375 13.1375L4.375 8.8375L1.25 5.79375L5.56875 5.1625L7.5 1.25Z"
-                              fill="#F3AE5E"
-                            />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-sm ">
-                    Lzorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusamus nobis explicabo aspernatur, dolor libero tenetur
-                    mollitia dolores illo amet natus!
-                  </p>
-                </div>
-              </div>
-            </div>
-            <span class="w-9 absolute -right-2 top-1/2 -translate-y-1/2 z-10 md:-right-8">
-              <svg
-                viewBox="0 0 36 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M20.6665 25.7363L33.9998 13.8681L20.6665 2"
-                  stroke="#018577"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M2 25.7363L15.3333 13.8681L2 2"
-                  stroke="#018577"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
-          </div>
-          <div className="hidden lg:hidden">
-            <div className="">
-              <div className="bg-secondary "></div>
+            <div>
+              <FiChevronsRight
+                size={60}
+                className="text-primary flex justify-end"
+              />
             </div>
           </div>
         </div>

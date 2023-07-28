@@ -1,98 +1,76 @@
-import nature from "../assets/nature.jpg"
+import { useState } from "react";
+import CFAQ from "./cards/CFAQ";
+
 const FAQ = () => {
+  const dataFAQ = [
+    {
+      id: 1,
+      question:
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum, dignissimos.",
+      answer:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat repellat laboriosam quisquam rem, nam ea velit temporibus sint laborum ducimus.",
+      open: false,
+    },
+    {
+      id: 2,
+      question:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, autem.",
+      answer:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae veniam dolor accusamus dolore aperiam voluptatum similique id commodi voluptatem quo.",
+      open: false,
+    },
+    {
+      id: 3,
+      question:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, autem.",
+      answer:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae veniam dolor accusamus dolore aperiam voluptatum similique id commodi voluptatem quo.",
+      open: false,
+    },
+    {
+      id: 4,
+      question:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, autem.",
+      answer:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae veniam dolor accusamus dolore aperiam voluptatum similique id commodi voluptatem quo.",
+      open: false,
+    },
+  ];
+
+  const [data, setData] = useState(dataFAQ);
+
+  const changeOpen = (id) => {
+    const dataTemp = data.map((value) => {
+      if (value.id === id) {
+        return { ...value, open: true };
+      }
+      return { ...value, open: false };
+    });
+    setData(dataTemp);
+  };
+
   return (
     <>
-      <section class="h-screen bg-secondary md:h-fit">
-        <div class="w-5/6 mx-auto pt-14 md:pt-32 md:pb-36">
-          <h1 class="text-primary font-medium text-3xl mb-12 text-center">
+      <section id="faq" class=" bg-secondary h-fit">
+        <div class="w-5/6 mx-auto py-24 md:py-32">
+          <h1
+            class="text-primary font-semibold tracking-wider text-3xl mb-12 text-center"
+            onClick={() => changeOpen(1)}
+          >
             FAQ
           </h1>
           <div class="max-w-4xl mx-auto">
-            <div class="">
-              <div class="bg-primary p-2 rounded-md flex gap-2 items-center">
-                <span class="w-3 text-white rotate-90">
-                  <svg
-                    viewBox="0 0 10 15"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4.53613 12.5L7.56038 7.5L4.53613 2.5"
-                      stroke="white"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-                <p class="text-white text-xl">Dimana Lokasi Gendingan?</p>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloremque ullam sunt eveniet architecto. Distinctio cum
-                pariatur natus illo beatae eum.
-              </p>
-            </div>
-            <div class="mb-2">
-              <div class="bg-primary p-2 rounded-md flex gap-2 items-center">
-                <span class="w-3 text-white">
-                  <svg
-                    viewBox="0 0 10 15"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4.53613 12.5L7.56038 7.5L4.53613 2.5"
-                      stroke="white"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-                <p class="text-white text-xl">Dimana Lokasi Gendingan?</p>
-              </div>
-            </div>
-            <div class="mb-2">
-              <div class="bg-primary p-2 rounded-md flex gap-2 items-center">
-                <span class="w-3 text-white">
-                  <svg
-                    viewBox="0 0 10 15"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4.53613 12.5L7.56038 7.5L4.53613 2.5"
-                      stroke="white"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-                <p class="text-white text-xl">Dimana Lokasi Gendingan?</p>
-              </div>
-            </div>
-            <div class="">
-              <div class="bg-primary p-2 rounded-md flex gap-2 items-center">
-                <span class="w-3 text-white">
-                  <svg
-                    viewBox="0 0 10 15"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4.53613 12.5L7.56038 7.5L4.53613 2.5"
-                      stroke="white"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-                <p class="text-white text-xl">Dimana Lokasi Gendingan?</p>
-              </div>
-            </div>
+            {data.map((value) => {
+              return (
+                <CFAQ
+                  answer={value.answer}
+                  question={value.question}
+                  id={value.id}
+                  open={value.open}
+                  changeOpen={changeOpen}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

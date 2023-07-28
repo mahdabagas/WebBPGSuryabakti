@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 
 const Home = () => {
   return (
-    <>
+    <div className="font-poppins ">
       <Navbar />
       <Hero />
       <About />
@@ -20,7 +20,7 @@ const Home = () => {
       <Rating />
       <FAQ />
       <Footer />
-    </>
+    </div>
   );
 };
 
