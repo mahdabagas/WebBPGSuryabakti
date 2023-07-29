@@ -1,5 +1,10 @@
 import { FiMapPin, FiPhone } from "react-icons/fi";
 
+// Gambar
+import logoIg from "../assets/logo_ig.png";
+import logoFb from "../assets/logo_fb.png";
+import logoWa from "../assets/logo_wa.png";
+
 const Footer = () => {
   return (
     <>
@@ -11,12 +16,8 @@ const Footer = () => {
               Kontak
             </h3>
             <div class="flex pr-6 pl-4 py-2 border-2 border-primary rounded-xl w-fit gap-3 mb-2 mx-auto items-center">
-              <FiPhone size={18}/>
-              <p class="text-xl">085866162237</p>
-            </div>
-            <div class="flex pr-6 pl-4 py-2 border-2 border-primary rounded-xl w-fit gap-3 mb-2 mx-auto items-center">
-              <FiPhone size={18}/>
-              <p class="text-xl">085866162237</p>
+              <FiPhone size={18} />
+              <p class="text-xl">0858608154719</p>
             </div>
           </div>
           <div id="alamat" class="mb-6">
@@ -24,8 +25,10 @@ const Footer = () => {
               Alamat
             </h3>
             <div class="flex justify-center gap-2 items-center">
-              <FiMapPin size={18}/>
-              <p class="text-xl">Sidorejo, Kendal, Ngawi</p>
+              <FiMapPin size={18} />
+              <p class="text-xl">
+                Dusun Tanon RT 07 RW 03, Desa Sidorejo, Kendal, Ngawi Jawa Timur
+              </p>
             </div>
           </div>
           <div id="social_media">
@@ -33,9 +36,27 @@ const Footer = () => {
               Social Media
             </h3>
             <div class="flex gap-2 justify-center">
-              <div class="w-12 h-12 bg-primary rounded-md"></div>
-              <div class="w-12 h-12 bg-primary rounded-md"></div>
-              <div class="w-12 h-12 bg-primary rounded-md"></div>
+              <a href="https://wa.me/62858608154719" target="_blank" rel="noreferrer">
+                <img
+                  src={logoWa}
+                  alt="logo_whatsapp"
+                  className="w-12 h-12 cursor-pointer"
+                />
+              </a>
+              <a href="http://instagram.com/bpg.suryabakti" target="_blank" rel="noreferrer">
+                <img
+                  src={logoIg}
+                  alt="logo_instagram"
+                  className="w-12 h-12 cursor-pointer"
+                />
+              </a>
+              <a href="http://www.facebook.com/bpg.suryabakti" target="_blank" rel="noreferrer">
+                <img
+                  src={logoFb}
+                  alt="logo_facebook"
+                  className="w-12 h-12 cursor-pointer"
+                />
+              </a>
             </div>
           </div>
         </div>

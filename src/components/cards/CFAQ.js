@@ -1,7 +1,7 @@
 const CFAQ = ({ question, answer, open, changeOpen, id }) => {
   return (
     <>
-      <div class="flex flex-col gap-1 mb-2 cursor-pointer">
+      <div class="flex flex-col gap-1 mb-3 cursor-pointer">
         <div
           onClick={() => changeOpen(id)}
           className="bg-primary py-3 px-4 rounded-md flex gap-3 items-center"
@@ -27,7 +27,7 @@ const CFAQ = ({ question, answer, open, changeOpen, id }) => {
           </span>
           <p className="flex-1 text-white md:text-lg lg:text-xl">{question}</p>
         </div>
-        {open && <p className="text-base">{answer}</p>}
+        {open && <p className="text-base lg:text-lg">{answer}</p>}
       </div>
     </>
   );

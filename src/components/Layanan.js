@@ -4,10 +4,10 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 // Gambar
-import nature from "../assets/nature.jpg";
-import nature_2 from "../assets/nature_2.jpg";
-import nature_3 from "../assets/nature_3.jpg";
-import nature_4 from "../assets/nature_4.jpg";
+import kolam_renang from "../assets/kolam_renang.jpg";
+import kolam_ikan from "../assets/kolam_ikan.jpg";
+import penyewaan_tempat from "../assets/penyewaan_tempat.jpg";
+import penyewaan_tenda from "../assets/penyewaan_tenda.png";
 
 const Layanan = () => {
   // Memebuat Animasi bergerak
@@ -30,15 +30,15 @@ const Layanan = () => {
 
   const getImageUrl = () => {
     if (curr === 0) {
-      return nature;
+      return kolam_renang;
     } else if (curr === 1) {
-      return nature_2;
+      return penyewaan_tempat;
     } else if (curr === 2) {
-      return nature_3;
+      return kolam_ikan;
     } else if (curr === 3) {
-      return nature_4;
+      return penyewaan_tenda;
     }
-    return nature;
+    return kolam_renang;
   };
 
   // Data Layanan Bumer Gendingan Suryabakti
@@ -46,26 +46,26 @@ const Layanan = () => {
     {
       judul: "Kolam Renang",
       deskripsi:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem facilis incidunt.",
-      gambar: nature,
+        "Kolam renang di Bumi Perkemahan Gendingan memiliki tiga ukuran yang berbeda, cocok untuk semua usia.",
+      gambar: kolam_renang,
     },
     {
-      judul: "Penyewaan lahan Bumi Perkemahan",
+      judul: "Penyewaan tempat Perkemahan",
       deskripsi:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem facilis incidunt.",
-      gambar: nature_2,
-    },
-    {
-      judul: "Penyewaan tenda",
-      deskripsi:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem facilis incidunt.",
-      gambar: nature_3,
+        "Menyediakan sewa tempat perkemahan dengan fasilitas lengkap, pemandangan indah, dan lingkungan aman ",
+      gambar: penyewaan_tempat,
     },
     {
       judul: "Kolam Ikan",
       deskripsi:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem facilis incidunt.",
-      gambar: nature_4,
+        "Terdapat berbagai jenis ikan yang menghuni kolam, dan juga dapat untuk membeli ikan-ikan tersebut",
+      gambar: kolam_ikan,
+    },
+    {
+      judul: "Penyewaan tenda",
+      deskripsi:
+        "Menyediakan fasilitas sewa tenda yang nyaman dan berkualitas untuk meningkatkan pengalaman perkemahan Anda.",
+      gambar: penyewaan_tenda,
     },
   ];
 
@@ -115,6 +115,7 @@ const Layanan = () => {
                           </>
                         );
                       }
+                      return null;
                     })}
                   </div>
                   <div
@@ -153,6 +154,7 @@ const Layanan = () => {
                           </>
                         );
                       }
+                      return null;
                     })}
                   </div>
                 </div>

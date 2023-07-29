@@ -1,4 +1,3 @@
-import nature from "../assets/nature.jpg";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
@@ -24,6 +23,7 @@ const Maps = () => {
               data-aos="fade-left"
             >
               <iframe
+                title="Maps"
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15820.060020519395!2d111.2603008!3d-7.5733422!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79f378243ffcbb%3A0x5df23940c4cba7e7!2sBumi%20perkemahan%20Gendingan!5e0!3m2!1sid!2sid!4v1690531899570!5m2!1sid!2sid"
                 className="w-full h-full"
                 allowfullscreen=""

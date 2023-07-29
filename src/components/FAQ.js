@@ -5,34 +5,38 @@ const FAQ = () => {
   const dataFAQ = [
     {
       id: 1,
-      question:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum, dignissimos.",
+      question: "Jam Berapa Bumi Perkemahan Gendingan Suryabakti di Buka?",
       answer:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat repellat laboriosam quisquam rem, nam ea velit temporibus sint laborum ducimus.",
+        "Bumi Perkemahan Gendingan Suryabakti Buka dari jam 07.00 WIB sampai 17.00 WIB",
       open: false,
     },
     {
       id: 2,
-      question:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, autem.",
+      question: "Bagaimana cara melakukan reservasi untuk berkemah?",
       answer:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae veniam dolor accusamus dolore aperiam voluptatum similique id commodi voluptatem quo.",
+        "Untuk melakukan reservasi berkemah dapat melalui nomor WhatsApp pada Website ini",
       open: false,
     },
     {
       id: 3,
       question:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, autem.",
+        "Berapa harga tiket masuk Bumi Perkemahan Gendingan Suryabakti?",
       answer:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae veniam dolor accusamus dolore aperiam voluptatum similique id commodi voluptatem quo.",
+        "Harga tiket masuk Bumi Perkemahan Gendingan Suryabakti adalah Rp.5000 per orang",
       open: false,
     },
     {
       id: 4,
-      question:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, autem.",
+      question: "Apakah bisa reservasi tempat untuk acara selain berkemah?",
       answer:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae veniam dolor accusamus dolore aperiam voluptatum similique id commodi voluptatem quo.",
+        "Sangat bisa, Kami memiliki Lahan yang luas serta banyak gazebo kecil untuk kapasitas 4-6 orang dan gazebo besar dengan kapasitas orang lebih banyak. ",
+      open: false,
+    },
+    {
+      id: 5,
+      question: "Bagaimana jika ingin memesan tenda untuk berkemah?",
+      answer:
+        "Untuk Melakukan Pemesanan tedan dapat melalui nomor WhatsApp pada website ini",
       open: false,
     },
   ];

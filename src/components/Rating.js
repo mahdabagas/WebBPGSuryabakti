@@ -1,5 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
+
+// Gambar
 import nature from "../assets/nature.jpg";
 import nature_2 from "../assets/nature_2.jpg";
 import nature_3 from "../assets/nature_3.jpg";
@@ -8,51 +13,51 @@ const Rating = () => {
   // Data Rating
   const ratings = [
     {
-      nama: "Bapak Bagas",
-      pekerjaan: "Kepala Desa",
-      nilai: 4,
+      nama: "Bapak Paryoko",
+      pekerjaan: "Pengunjung Lokal",
+      nilai: 5,
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero suscipit non debitis, eligendi voluptates iure ad dolor aut tenetur aperiam.",
+        "Nyaman, sejuk lingkungan dan kolam renangnya, air jernih melimpah Tempat rehat  ada gazebo² walau msih proses pengembangan sudah terlihat kedepannya pasti woow...",
       foto: nature,
     },
     {
-      nama: "Bapak Mahda Dhani",
-      pekerjaan: "Kepala Desa",
-      nilai: 4,
+      nama: "Bapak Pe We",
+      pekerjaan: "Pengunjung Lokal",
+      nilai: 5,
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptas.",
+        "Kini disulap menjadi destinasi wisata yang menarik dan eksotik. Area piknik, Ada kolam renang Tempat duingin dan suwejuk",
       foto: nature_2,
     },
     {
-      nama: "Bapak Dhani",
-      pekerjaan: "Kepala Desa",
-      nilai: 4,
+      nama: "Ibu Ita Anduwi S",
+      pekerjaan: "Pengunjung Lokal",
+      nilai: 5,
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptas.",
+        "Tempat nya nyaman Sejuk.cocok banget klo yg suka berkemah.kolam ikan nya juga ikan nya besar2.kolam renang nya lumayan.toilet nya banyak.",
       foto: nature_3,
     },
     {
-      nama: "Bapak Daniel",
-      pekerjaan: "Kepala Desa",
+      nama: "Dani Ifallah ",
+      pekerjaan: "Pengunjung Lokal",
       nilai: 4,
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptas.",
+        "Pemandangan pagi yang sangat indah dan cocok banget buat camp kegiatan organizer, sekolah, ataupun bersama teman atau keluarga",
       foto: nature,
     },
     {
-      nama: "Bapak Taubatan",
-      pekerjaan: "Kepala Desa",
-      nilai: 4,
+      nama: "Nur Rosyid",
+      pekerjaan: "Pengunjung Lokal",
+      nilai: 5,
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptas.",
+        "Sudah tertata bagus,, fasilitas lumayan,, nyaman untuk perkemahan, sekaligus asyik untuk melepas penat",
       foto: nature_2,
     },
     {
-      nama: "Bapak Muhammad",
-      pekerjaan: "Kepala Desa",
+      nama: "Gufron Ansori",
+      pekerjaan: "Pengunjung Lokal",
       nilai: 4,
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptas.",
+        "Bumi perkemahan sekarang di lengkapi dengan banyak gasibo dan 3 kolam renang",
       foto: nature_3,
     },
   ];
@@ -83,37 +88,35 @@ const Rating = () => {
     );
   };
 
-  // Slide comment
-  const [curr, setCurr] = useState(0);
-
-  const prevSlide = () => {
-    setCurr((prevIndex) =>
-      prevIndex === 0 ? ratings.length - 1 : prevIndex - 1
+  function SamplePrevArrow(props) {
+    const { className, onClick } = props;
+    return (
+      <div className={className} onClick={onClick}>
+        <FiChevronsLeft className="text-primary w-10 h-10 relative -left-10" />
+      </div>
     );
+  }
+
+  function SampleNextArrow(props) {
+    const { className, onClick } = props;
+    return (
+      <div className={className} onClick={onClick}>
+        <FiChevronsRight className="text-primary w-10 h-10 relative -right-6" />
+      </div>
+    );
+  }
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow />,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    fade: true,
+    speed: 1500,
   };
-
-  // Auto Play
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const totalCard = ratings.length;
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalCard);
-  };
-  useEffect(() => {
-    const autoPlay = setInterval(nextSlide, 1000);
-    return () => {
-      clearInterval(autoPlay);
-    };
-  }, [currentIndex]);
-
-  useEffect(() => {
-    // Check if currentIndex has reached the last card, then reset to the first card
-    if (currentIndex === totalCard - 3) {
-      setTimeout(() => {
-        setCurrentIndex(0);
-      }, 500); // Delay the reset to avoid abrupt change
-    }
-  }, [currentIndex, totalCard]);
 
   return (
     <>
@@ -122,23 +125,13 @@ const Rating = () => {
           <h1 class="text-primary font-semibold tracking-wider text-3xl mb-12 text-center">
             Apa Kata Wisatawan?
           </h1>
-          <div class="w-5/6 mx-auto relative flex items-center gap-2">
-            <div>
-              <FiChevronsLeft
-                size={60}
-                className="text-primary flex justify-end"
-              />
-            </div>
-
-            <div className="md:w-9/12 relative -left-2 mx-auto flex overflow-x-scroll no-scrollbar md:-left-0">
-              <div
-                className="flex flex-nowrap gap-8 ml-5 md:ml-2 lg:md-0 md:gap-6 transition-transform duration-300 "
-                style={{ transform: `translateX(-${currentIndex * 280}px)` }}
-              >
+          <div class="w-5/6 mx-auto ">
+            <div className="w-4/6 mx-auto">
+              <Slider {...settings}>
                 {ratings.map((value, index) => (
                   <div
                     key={index}
-                    className="p-6 bg-secondary drop-shadow-md overflow-hidden min-h-72 w-[400px] lg:w-64 max-w-xs mx-auto"
+                    className="px-6 py-8 bg-secondary rounded-xl min-h-80 mx-auto border-2 border-primary"
                   >
                     <div className="flex gap-4 flex-col items-center ">
                       <img
@@ -156,16 +149,10 @@ const Rating = () => {
                         {starRating(value.nilai)}
                       </div>
                     </div>
-                    <p className="text-sm">{value.komentar}</p>
+                    <p className="text-sm text-center">{value.komentar}</p>
                   </div>
                 ))}
-              </div>
-            </div>
-            <div>
-              <FiChevronsRight
-                size={60}
-                className="text-primary flex justify-end"
-              />
+              </Slider>
             </div>
           </div>
         </div>

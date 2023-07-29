@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
+import BPGSuryabakti from "./../assets/BPGSuryabakti.png";
 import { FiMenu, FiX } from "react-icons/fi";
-
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -30,7 +30,16 @@ const Navbar = () => {
         } fixed z-50 w-full h-12 md:h-14 flex items-center transition-colors duration-100`}
       >
         <div class="w-5/6 flex justify-between items-center mx-auto text-white relative">
-          <h1 className="text-2xl"><a href="#">GENDINGAN</a></h1>
+          <a className="flex items-center gap-2 cursor-pointer" href="#home">
+            <div className="h-14 w-14 ">
+              <img
+                src={BPGSuryabakti}
+                alt="logo"
+                className="w-full h-full bg-cover bg-center"
+              />
+            </div>
+            <h1 className="text-xl">BPG Suryabakti</h1>
+          </a>
           <div className="lg:hidden">
             <button
               className={`${
@@ -53,7 +62,7 @@ const Navbar = () => {
           </div>
 
           {/* Tampilan lg */}
-          <nav class="hidden gap-9 lg:flex h-full items-center p-4 text-lg w-full justify-end">
+          <nav class="hidden gap-9 lg:flex h-full items-center p-4 text-lg  justify-end">
             <div className="hover:border-b-2 hover:text-accent border-accent duration-100 cursor-pointer">
               <a href="#about">About</a>
             </div>

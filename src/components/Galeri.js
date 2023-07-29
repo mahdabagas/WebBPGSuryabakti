@@ -5,14 +5,14 @@ import "aos/dist/aos.css";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 // Gambar
-import nature from "../assets/nature.jpg";
-import nature_2 from "../assets/nature_2.jpg";
-import nature_3 from "../assets/nature_3.jpg";
-import nature_4 from "../assets/nature_4.jpg";
-import nature_5 from "../assets/nature_5.jpg";
-import nature_6 from "../assets/nature_6.jpg";
+import galeri_1 from "../assets/galeri_1.jpg";
+import galeri_2 from "../assets/galeri_2.jpg";
+import galeri_3 from "../assets/galeri_3.jpg";
+import galeri_4 from "../assets/galeri_4.jpg";
+import galeri_5 from "../assets/galeri_5.jpg";
+import galeri_6 from "../assets/galeri_6.jpg";
 
-const images = [nature, nature_2, nature_3, nature_4, nature_5, nature_6];
+const images = [galeri_4, galeri_6, galeri_1, galeri_2, galeri_5, galeri_3];
 
 const Galeri = () => {
   const [curr, setCurr] = useState(0);
@@ -91,7 +91,7 @@ const Galeri = () => {
                     >
                       <FiChevronLeft size={60} className="text-primary" />
                     </button>
-                    <div className="relative w-11/12 mx-auto overflow-hidden">
+                    <div className="relative  mx-auto overflow-hidden">
                       <div
                         className="flex transition-transform duration-300 ease-in-out"
                         style={{ transform: `translateX(-${curr * 100}%)` }}
@@ -100,7 +100,8 @@ const Galeri = () => {
                           return (
                             <>
                               <img
-                                class="rounded-2xl border-4 border-white inline-block"
+                                key={index}
+                                class=" rounded-2xl border-4 border-white inline-block"
                                 src={image}
                                 alt="galeri"
                               />
@@ -111,10 +112,10 @@ const Galeri = () => {
                     </div>
 
                     <button
-                      class="absolute -right-5 top-1/2 -translate-y-1/2 scale-x-[-1] md:-right-8"
+                      class="absolute -right-5 top-1/2 -translate-y-1/2  md:-right-8"
                       onClick={nextSlide}
                     >
-                      <FiChevronLeft size={60} className="text-primary" />
+                      <FiChevronRight size={60} className="text-primary" />
                     </button>
                   </div>
                 </div>
