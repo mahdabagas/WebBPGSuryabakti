@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Media from "react-media";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import Slider from "react-slick";
 
 // Gambar
 import galeri_1 from "../assets/galeri_1.jpg";
@@ -15,37 +15,22 @@ import galeri_6 from "../assets/galeri_6.jpg";
 const images = [galeri_4, galeri_6, galeri_1, galeri_2, galeri_5, galeri_3];
 
 const Galeri = () => {
-  const [curr, setCurr] = useState(0);
-
-  const prevSlide = () => {
-    setCurr((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const nextSlide = () => {
-    setCurr((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurr((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 2000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
   // Init AOS
   useEffect(() => {
     Aos.init();
     Aos.refresh();
   }, []);
+
+  // Setting Slider
+  const setting = {
+    dots: false,
+    infinite: true,
+    speed: 1500,
+    autoplay: true,
+    cssEase: "linear",
+    slideToShow: 1,
+    slideToScroll: 1,
+  };
 
   return (
     <>
@@ -84,39 +69,23 @@ const Galeri = () => {
                 </div>
               ) : (
                 <div className="mx-auto">
-                  <div class="max-w-xl mx-auto relative md:px-4 ">
-                    <button
-                      class="absolute -left-5 top-1/2 -translate-y-1/2 md:-left-8 z-20"
-                      onClick={prevSlide}
-                    >
-                      <FiChevronLeft size={60} className="text-primary" />
-                    </button>
-                    <div className="relative  mx-auto overflow-hidden">
-                      <div
-                        className="flex transition-transform duration-300 ease-in-out"
-                        style={{ transform: `translateX(-${curr * 100}%)` }}
-                      >
+                  <div class="max-w-xl mx-auto relative md:px-4  ">
+                    {
+                      <Slider {...setting}>
                         {images.map((image, index) => {
                           return (
-                            <>
+                            <div className="w-full h-64 md:h-96 rounded-2xl border-4 border-white overflow-hidden ">
                               <img
                                 key={index}
-                                class=" rounded-2xl border-4 border-white inline-block"
+                                class=" w-full h-full object-cover object-center inline-block"
                                 src={image}
                                 alt="galeri"
                               />
-                            </>
+                            </div>
                           );
                         })}
-                      </div>
-                    </div>
-
-                    <button
-                      class="absolute -right-5 top-1/2 -translate-y-1/2  md:-right-8"
-                      onClick={nextSlide}
-                    >
-                      <FiChevronRight size={60} className="text-primary" />
-                    </button>
+                      </Slider>
+                    }
                   </div>
                 </div>
               );

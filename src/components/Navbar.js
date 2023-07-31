@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import BPGSuryabakti from "./../assets/BPGSuryabakti.png";
 import { FiMenu, FiX } from "react-icons/fi";
+
+// import gambar
+import logoWa from "../assets/logo_wa.png";
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   // Function to handle scroll event
   const handleScroll = () => {
-    if (window.scrollY > 0) {
+    if (window.scrollY > 75) {
       setScrolled(true);
     } else {
       setScrolled(false);
@@ -23,11 +27,14 @@ const Navbar = () => {
     };
   }, []);
   return (
-    <div className="relative">
+    <>
       <header
+        id="navbar"
         class={`${
-          scrolled ? "bg-primary md:bg-primary/80" : "bg-primary/20"
-        } absolute z-50 top-0 left-0 right-0 h-12 md:h-14 flex items-center transition-colors duration-100`}
+          scrolled
+            ? "bg-primary md:bg-primary/80 sticky top-0 backdrop-blur-sm"
+            : "bg-primary/10  absolute top-0"
+        } w-full z-40 flex items-center transition-colors duration-100 `}
       >
         <div class="w-5/6 flex justify-between items-center mx-auto text-white ">
           <a className="flex items-center gap-2 cursor-pointer" href="#home">
@@ -123,7 +130,16 @@ const Navbar = () => {
           </div>
         </div>
       </header>
-    </div>
+      <div className=" fixed z-50 bottom-3 right-5 bg-white w-10 h-10 md:w-16 md:h-16 lg:w-20 lg:h-20 flex items-center rounded-full p-1 md:p-2 lg:p-4 drop-shadow-lg border-2 border-primary">
+        <a href="https://wa.me/62858608154719" target="_blank" rel="noreferrer">
+          <img
+            src={logoWa}
+            alt=""
+            className="object-cover object-center w-ful h-full"
+          />
+        </a>
+      </div>
+    </>
   );
 };
 

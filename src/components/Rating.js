@@ -4,10 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
 
-// Gambar
-import nature from "../assets/nature.jpg";
-import nature_2 from "../assets/nature_2.jpg";
-import nature_3 from "../assets/nature_3.jpg";
+import pp from "../assets/pp.png";
 
 const Rating = () => {
   // Data Rating
@@ -18,7 +15,7 @@ const Rating = () => {
       nilai: 5,
       komentar:
         "Nyaman, sejuk lingkungan dan kolam renangnya, air jernih melimpah Tempat rehat  ada gazebo² walau msih proses pengembangan sudah terlihat kedepannya pasti woow...",
-      foto: nature,
+      foto: pp,
     },
     {
       nama: "Bapak Pe We",
@@ -26,7 +23,7 @@ const Rating = () => {
       nilai: 5,
       komentar:
         "Kini disulap menjadi destinasi wisata yang menarik dan eksotik. Area piknik, Ada kolam renang Tempat duingin dan suwejuk",
-      foto: nature_2,
+      foto: pp,
     },
     {
       nama: "Ibu Ita Anduwi S",
@@ -34,7 +31,7 @@ const Rating = () => {
       nilai: 5,
       komentar:
         "Tempat nya nyaman Sejuk.cocok banget klo yg suka berkemah.kolam ikan nya juga ikan nya besar2.kolam renang nya lumayan.toilet nya banyak.",
-      foto: nature_3,
+      foto: pp,
     },
     {
       nama: "Dani Ifallah ",
@@ -42,7 +39,7 @@ const Rating = () => {
       nilai: 4,
       komentar:
         "Pemandangan pagi yang sangat indah dan cocok banget buat camp kegiatan organizer, sekolah, ataupun bersama teman atau keluarga",
-      foto: nature,
+      foto: pp,
     },
     {
       nama: "Nur Rosyid",
@@ -50,7 +47,7 @@ const Rating = () => {
       nilai: 5,
       komentar:
         "Sudah tertata bagus,, fasilitas lumayan,, nyaman untuk perkemahan, sekaligus asyik untuk melepas penat",
-      foto: nature_2,
+      foto: pp,
     },
     {
       nama: "Gufron Ansori",
@@ -58,7 +55,7 @@ const Rating = () => {
       nilai: 4,
       komentar:
         "Bumi perkemahan sekarang di lengkapi dengan banyak gasibo dan 3 kolam renang",
-      foto: nature_3,
+      foto: pp,
     },
   ];
 
