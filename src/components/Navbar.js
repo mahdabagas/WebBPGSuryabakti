@@ -23,13 +23,13 @@ const Navbar = () => {
     };
   }, []);
   return (
-    <>
+    <div className="relative">
       <header
         class={`${
           scrolled ? "bg-primary md:bg-primary/80" : "bg-primary/20"
-        } fixed z-50 w-full h-12 md:h-14 flex items-center transition-colors duration-100`}
+        } absolute z-50 top-0 left-0 right-0 h-12 md:h-14 flex items-center transition-colors duration-100`}
       >
-        <div class="w-5/6 flex justify-between items-center mx-auto text-white relative">
+        <div class="w-5/6 flex justify-between items-center mx-auto text-white ">
           <a className="flex items-center gap-2 cursor-pointer" href="#home">
             <div className="h-14 w-14 ">
               <img
@@ -38,7 +38,7 @@ const Navbar = () => {
                 className="w-full h-full bg-cover bg-center"
               />
             </div>
-            <h1 className="text-xl">BPG Suryabakti</h1>
+            <h1 className="md:text-xl">BPG Suryabakti</h1>
           </a>
           <div className="lg:hidden">
             <button
@@ -60,7 +60,6 @@ const Navbar = () => {
               <FiX className="w-7 h-7" />
             </button>
           </div>
-
           {/* Tampilan lg */}
           <nav class="hidden gap-9 lg:flex h-full items-center p-4 text-lg  justify-end">
             <div className="hover:border-b-2 hover:text-accent border-accent duration-100 cursor-pointer">
@@ -124,7 +123,7 @@ const Navbar = () => {
           </div>
         </div>
       </header>
-    </>
+    </div>
   );
 };
 
